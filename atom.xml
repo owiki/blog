@@ -5,16 +5,21 @@
   <subtitle>道阻且跻</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://icodex.me/"/>
   <updated>2019-11-24T11:08:06.057Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://icodex.me/</id>
+  
+  <author>
+    <name>oxygen</name>
+    
+  </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
     <title>搭建Hexo博客</title>
-    <link href="http://yoursite.com/2019/11/24/%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://yoursite.com/2019/11/24/%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/</id>
+    <link href="https://icodex.me/2019/11/24/%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/"/>
+    <id>https://icodex.me/2019/11/24/%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/</id>
     <published>2019-11-24T11:03:14.980Z</published>
     <updated>2019-11-24T11:08:06.057Z</updated>
     
@@ -27,10 +32,10 @@
     </summary>
     
     
-      <category term="其他" scheme="http://yoursite.com/categories/%E5%85%B6%E4%BB%96/"/>
+      <category term="其他" scheme="https://icodex.me/categories/%E5%85%B6%E4%BB%96/"/>
     
     
-      <category term="blog" scheme="http://yoursite.com/tags/blog/"/>
+      <category term="blog" scheme="https://icodex.me/tags/blog/"/>
     
   </entry>
   
