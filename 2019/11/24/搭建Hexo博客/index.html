@@ -417,6 +417,7 @@
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
         </div>
           
@@ -583,6 +584,24 @@ setInterval("createtime()",250);
   
 
   
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: '97da426bc91814c79ce9',
+      clientSecret: '46beb91141f857a50c365dc43f4c8b044d0371a4',
+      repo: 'blog-comment',
+      owner: 'owiki',
+      admin: ['owiki'],
+      id: '4456b1914c0681de5857b8f61fb74f3c',
+        language: 'zh-CN',
+      distractionFreeMode: 'false'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+</script>
 
 </body>
 </html>
