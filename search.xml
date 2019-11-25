@@ -3,8 +3,38 @@
   <entry>
     <title>搭建Hexo博客</title>
     <url>/2019/11/24/%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<p>忽然觉得Hexo搭建博客很快，对，那就折腾一下吧！</p><h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-<span class="keyword">cli</span></span><br></pre></td></tr></table></figure><a id="more"></a>
+    <content><![CDATA[<p>忽然觉得Hexo搭建博客很快，对，那就折腾一下吧！</p><h3 id="新建GitHub-Page仓库"><a href="#新建GitHub-Page仓库" class="headerlink" title="新建GitHub Page仓库"></a>新建GitHub Page仓库</h3><ul>
+<li>建仓库的过程和新建其他仓库一样，只是注意仓库名使用<code>&lt;username&gt;.github.io</code>的形式就行，这里不再赘述</li>
+</ul><a id="more"></a>
 
+<h3 id="自定义域名"><a href="#自定义域名" class="headerlink" title="自定义域名"></a>自定义域名</h3><ul>
+<li>个人建议去GoDaddy买域名，一般都是24块钱左右，土豪另算</li>
+<li>买完就能在GoDaddy控制台解析域名，一般解析两条就行，一条指向<code>github.io</code>这个域名的IP地址（不知道就ping一下），另一条指向<code>&lt;username&gt;.github.io</code>，对，就是你刚新建的GitHub Page仓库</li>
+</ul>
+<h4 id="以GoDaddy为例，域名解析入口如下图"><a href="#以GoDaddy为例，域名解析入口如下图" class="headerlink" title="以GoDaddy为例，域名解析入口如下图"></a>以GoDaddy为例，域名解析入口如下图</h4><p><img src="/images/20191125225206.png" alt="域名解析"></p>
+<h4 id="找到“添加”按钮，新建记录如下"><a href="#找到“添加”按钮，新建记录如下" class="headerlink" title="找到“添加”按钮，新建记录如下"></a>找到“添加”按钮，新建记录如下</h4><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>主机</th>
+<th>指向</th>
+<th>TTL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A</td>
+<td>@</td>
+<td>github.io这个域名的IP</td>
+<td>600</td>
+</tr>
+<tr>
+<td>CNAME</td>
+<td>www</td>
+<td><username>.github.io</username></td>
+<td>600</td>
+</tr>
+</tbody></table>
+<h3 id="开始搭建hexo博客"><a href="#开始搭建hexo博客" class="headerlink" title="开始搭建hexo博客"></a>开始搭建hexo博客</h3><figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-<span class="keyword">cli</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">hexo init</span></span><br></pre></td></tr></table></figure>
 <h4 id="本地运行"><a href="#本地运行" class="headerlink" title="本地运行"></a>本地运行</h4><ul>
@@ -16,7 +46,7 @@
 </ul>
 <figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line">hexo <span class="keyword">generate</span> / hexo g</span><br></pre></td></tr></table></figure>
 <ul>
-<li>本地运行</li>
+<li>本地运行调试</li>
 </ul>
 <figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">hexo<span class="built_in"> server </span>/ hexo s</span><br></pre></td></tr></table></figure>
 <h4 id="关联并发布到GitHub"><a href="#关联并发布到GitHub" class="headerlink" title="关联并发布到GitHub"></a><a href="https://hexo.io/zh-cn/docs/one-command-deployment#Git" target="_blank" rel="noopener">关联并发布到GitHub</a></h4><ul>
@@ -44,10 +74,7 @@
 </ul>
 <figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">hexo d -g</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="配置next"><a href="#配置next" class="headerlink" title="配置next"></a>配置next</h4><blockquote>
-<p>设置菜单栏</p>
-</blockquote>
-<ul>
+<h4 id="配置next"><a href="#配置next" class="headerlink" title="配置next"></a>配置next</h4><h5 id="设置菜单栏"><a href="#设置菜单栏" class="headerlink" title="设置菜单栏"></a>设置菜单栏</h5><ul>
 <li>打开<code>themes/next</code>主题下的<code>_config.yml</code>文件，找到<code>menu</code>字段</li>
 </ul>
 <figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || home</span><br><span class="line">  #about: /about/ || user</span><br><span class="line">  tags: /tags/ || tags</span><br><span class="line">  categories: /categories/ || th</span><br><span class="line">  archives: /archives/ || archivemenu</span><br></pre></td></tr></table></figure>
@@ -63,57 +90,36 @@
 <li>在编辑markdown的时候，在顶部添加表示就能正常显示了</li>
 </ul>
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">Hello</span> <span class="string">World</span></span><br><span class="line"><span class="attr">categories:</span> <span class="string">测试分类</span></span><br><span class="line"><span class="attr">tags:</span> <span class="string">[bullshit,what]</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>设置代码高亮风格</p>
-</blockquote>
-<ul>
+<h5 id="设置代码高亮风格"><a href="#设置代码高亮风格" class="headerlink" title="设置代码高亮风格"></a>设置代码高亮风格</h5><ul>
 <li>找到<code>themes/next/_config.yml</code>文件的<code>highlight_theme</code>字段，可以设置注释给的几种样式</li>
 <li>找到根目录<code>_config.yml</code>文件的<code>highlight</code>，将<code>auto_detect</code>设为<code>true</code></li>
 <li>重新编译并运行就可以生效了</li>
 </ul>
-<blockquote>
-<p>设置文章评论</p>
-</blockquote>
-<ul>
+<h5 id="设置文章评论"><a href="#设置文章评论" class="headerlink" title="设置文章评论"></a>设置文章评论</h5><ul>
 <li>找到<code>themes/next/_config.yml</code>的<code>comments</code>字段，随便选一种使用就行</li>
 </ul>
-<blockquote>
-<p>折叠首页文章显示内容</p>
-</blockquote>
-<ul>
+<h5 id="折叠首页文章显示内容"><a href="#折叠首页文章显示内容" class="headerlink" title="折叠首页文章显示内容"></a>折叠首页文章显示内容</h5><ul>
 <li>找到<code>themes/next/_config.yml</code>的<code>auto_excerpt</code>字段，设置为<code>true</code></li>
 <li>重新编译并运行</li>
 </ul>
-<blockquote>
-<p>自定义404页面</p>
-</blockquote>
-<ul>
+<h5 id="自定义404页面"><a href="#自定义404页面" class="headerlink" title="自定义404页面"></a>自定义404页面</h5><ul>
 <li>首先创建一个404页面文件</li>
 </ul>
 <figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">hexo new<span class="built_in"> page </span>404</span><br></pre></td></tr></table></figure>
 <ul>
-<li>编辑404页面之前，头部要添加如下一段代码，这样404页面会内嵌在markdown渲染后的框架里</li>
+<li>在404页面的html代码前，头部要添加如下一段代码，这样404页面会内嵌在markdown渲染后的框架里</li>
 </ul>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">some</span> <span class="string">error</span></span><br><span class="line"><span class="attr">toc:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">comments:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">/404</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>自定义Favicon</p>
-</blockquote>
-<ul>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">some</span> <span class="string">error</span></span><br><span class="line"><span class="attr">toc:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">comments:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">/404</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"></span><br><span class="line"><span class="string">&lt;doctype</span> <span class="string">html&gt;</span></span><br><span class="line"><span class="string">xxx</span></span><br></pre></td></tr></table></figure>
+<h5 id="自定义Favicon"><a href="#自定义Favicon" class="headerlink" title="自定义Favicon"></a>自定义Favicon</h5><ul>
 <li>可以去<a href="https://favicon.io/" target="_blank" rel="noopener">favicon.io</a>这个网站找一个Favicon，然后下载下来</li>
 <li>将Favicon图片放在<code>themes/next/source/images</code>文件夹中</li>
 <li>设置<code>themes/next/_config.yml</code>的<code>favicon</code>字段，将文件路径改成自己的Favicon文件名</li>
 <li>重新编译并运行即可生效</li>
 </ul>
-<blockquote>
-<p>添加GA</p>
-</blockquote>
-<ul>
+<h5 id="添加GA"><a href="#添加GA" class="headerlink" title="添加GA"></a>添加GA</h5><ul>
 <li>找到<code>themes/next/_config.yml</code>的<code>google_analytics</code>字段，将UA-id填进去</li>
 </ul>
-<blockquote>
-<p>设置搜索</p>
-</blockquote>
-<ul>
+<h5 id="设置搜索"><a href="#设置搜索" class="headerlink" title="设置搜索"></a>设置搜索</h5><ul>
 <li>安装第三方插件<code>hexo-generator-searchdb</code></li>
 </ul>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">npm <span class="keyword">install</span> hexo-generator-searchdb <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
@@ -125,6 +131,23 @@
 <li>编辑<code>themes/next/_config.yml</code>文件，找到并设置<code>local_search</code>为<code>true</code></li>
 </ul>
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Local search</span></span><br><span class="line"><span class="attr">local_search:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h5 id="压缩静态页面"><a href="#压缩静态页面" class="headerlink" title="压缩静态页面"></a>压缩静态页面</h5><ul>
+<li>全局加本地安装gulp，先看看<code>package.json</code>里面是不是有gulp，有的话先卸载掉</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">npm <span class="keyword">uninstall</span> -g gulp</span><br><span class="line"></span><br><span class="line">npm <span class="keyword">uninstall</span> <span class="comment">--save gulp </span></span><br><span class="line"></span><br><span class="line">npm <span class="keyword">install</span> -g gulp</span><br></pre></td></tr></table></figure>
+<ul>
+<li>然后安装gulp和gulp插件</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">npm <span class="keyword">install</span> <span class="comment">--save gulp-minify-css gulp-htmlmin gulp-htmlclean gulp</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>然后在根目录新建<code>gulpfile.js</code>文件，并添加如下代码，即选择压缩html和css资源</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"><span class="keyword">var</span> minifycss = <span class="built_in">require</span>(<span class="string">'gulp-minify-css'</span>);</span><br><span class="line"><span class="keyword">var</span> htmlmin = <span class="built_in">require</span>(<span class="string">'gulp-htmlmin'</span>);</span><br><span class="line"><span class="keyword">var</span> htmlclean = <span class="built_in">require</span>(<span class="string">'gulp-htmlclean'</span>);</span><br><span class="line">gulp.task(<span class="string">'minify-css'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">done</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">'./public/**/*.css'</span>)</span><br><span class="line">        .pipe(minifycss())</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'./public'</span>));</span><br><span class="line">    done();</span><br><span class="line">&#125;);</span><br><span class="line">gulp.task(<span class="string">'minify-html'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">done</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">'./public/**/*.html'</span>)</span><br><span class="line">        .pipe(htmlclean())</span><br><span class="line">        .pipe(htmlmin(&#123;</span><br><span class="line">            removeComments: <span class="literal">true</span>,</span><br><span class="line">            minifyJS: <span class="literal">true</span>,</span><br><span class="line">            minifyCSS: <span class="literal">true</span>,</span><br><span class="line">            minifyURLs: <span class="literal">true</span>,</span><br><span class="line">        &#125;))</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'./public'</span>));</span><br><span class="line">    done();</span><br><span class="line">&#125;);</span><br><span class="line">gulp.task(<span class="string">'default'</span>, gulp.series(gulp.parallel(<span class="string">'minify-html'</span>, <span class="string">'minify-css'</span>)), <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"----------gulp Finished----------"</span>);</span><br><span class="line">    <span class="comment">// Do something after a, b, and c are finished.</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>最后运行，这个压缩本地看不到效果，要发布才能看到</li>
+</ul>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">hexo</span> <span class="string">g</span></span><br><span class="line"></span><br><span class="line"><span class="attr">gulp</span></span><br><span class="line"></span><br><span class="line"><span class="attr">hexo</span> <span class="string">d</span></span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>其他</category>
