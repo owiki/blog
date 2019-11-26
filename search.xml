@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>基于antd官网方案的换肤</title>
+    <url>/2019/11/27/%E5%9F%BA%E4%BA%8Eantd%E5%AE%98%E7%BD%91%E6%96%B9%E6%A1%88%E7%9A%84%E6%8D%A2%E8%82%A4/</url>
+    <content><![CDATA[<h4 id="rc-color-picker"><a href="#rc-color-picker" class="headerlink" title="rc-color-picker"></a><a href="rc-color-picker">rc-color-picker</a></h4><ul>
+<li>一款社区拾色器组件，也是antd官方推荐的</li>
+</ul><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line">npm install --<span class="built_in">save</span> rc-<span class="built_in">color</span>-picker</span><br></pre></td></tr></table></figure><a id="more"></a>
+
+<h4 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h4><figure class="highlight xl"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> ColorPicker from 'rc-<span class="built_in">color</span>-picker';</span><br><span class="line"></span><br><span class="line"><span class="comment">//注意引入样式</span></span><br><span class="line"><span class="keyword">import</span> 'rc-<span class="built_in">color</span>-picker/assets/index.css';</span><br></pre></td></tr></table></figure>
+<h4 id="回调函数onChange，注意返回的是一个对象"><a href="#回调函数onChange，注意返回的是一个对象" class="headerlink" title="回调函数onChange，注意返回的是一个对象"></a>回调函数onChange，注意返回的是一个对象</h4><figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">handleColorChange = result =&gt; &#123;</span><br><span class="line">    console.log(result.<span class="attribute">color</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">render</span><span class="params">()</span></span>&#123;</span><br><span class="line">    return (</span><br><span class="line">        &lt;ColorPicker</span><br><span class="line">            style=&#123;&#123;</span><br><span class="line">                <span class="attribute">margin</span>: <span class="string">'auto'</span></span><br><span class="line">            &#125;&#125;</span><br><span class="line">            <span class="attribute">animation</span>=<span class="string">"slide-up"</span></span><br><span class="line">            <span class="attribute">color</span>=&#123;<span class="string">'#36c'</span>&#125;</span><br><span class="line">            onChange=&#123;handleColorChange&#125;</span><br><span class="line">        /&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="基于less结合rc-color-picker实现的换肤"><a href="#基于less结合rc-color-picker实现的换肤" class="headerlink" title="基于less结合rc-color-picker实现的换肤"></a>基于less结合rc-color-picker实现的换肤</h4><ul>
+<li>故事是这样的，在一个月黑风高的夜晚，有一个需求是换色，看了antd的官网就支持随机取色然后替换，那么开始谷歌折腾起来！</li>
+<li>最后效果</li>
+</ul>
+<p><img src="/images/%E6%8D%A2%E8%82%A4.gif" alt="换肤"></p>
+<ul>
+<li>具体实现方案是这样的</li>
+</ul>
+<ol>
+<li>利用className+less来为DOM元素设置颜色</li>
+</ol>
+<figure class="highlight processing"><table><tr><td class="code"><pre><span class="line">&lt;div className=<span class="string">"themeBtn"</span>&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//.less文件</span></span><br><span class="line">@primary-<span class="built_in">color</span>: <span class="built_in">blue</span>;</span><br><span class="line"></span><br><span class="line">.themeBtn&#123;</span><br><span class="line">    <span class="built_in">width</span>: <span class="number">200</span>px;</span><br><span class="line">    <span class="built_in">height</span>: <span class="number">200</span>px;</span><br><span class="line">    <span class="built_in">background</span>: @primary-<span class="built_in">color</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>然后利用less的<a href="https://www.html.cn/doc/less/usage/#using-less-in-the-browser" target="_blank" rel="noopener">修改变量</a>来替换颜色值变量</li>
+</ol>
+<blockquote>
+<p><a href="http://lesscss.org/usage/#using-less-in-the-browser" target="_blank" rel="noopener">Using Less in the Browser</a></p>
+</blockquote>
+<p>i: 我们要将刚才设置的less引用在html页面，如果是react，直接放public里面的<code>index.html</code>就行</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">&lt;link <span class="attribute">rel</span>=<span class="string">"stylesheet/less"</span> <span class="attribute">type</span>=<span class="string">"text/css"</span> <span class="attribute">href</span>=<span class="string">"styles.less"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<p>ii：下载<code>less.js</code>文件到本地，然后也放在public文件夹里，并且在<code>index.html</code>的<code>&lt;head&gt;</code>里面引用</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"less.js"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>iii：最后就可以使用<code>window.less</code>这个属性了<a href="http://lesscss.org/usage/#using-less-in-the-browser-modify-variables" target="_blank" rel="noopener">改变less里的全局变量</a>了</p>
+<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line"><span class="comment">//这是rc-color-picker的取色回调函数</span></span><br><span class="line">handleColorChange = result =&gt; &#123;</span><br><span class="line">    console.<span class="keyword">log</span>(result.<span class="keyword">color</span>);</span><br><span class="line">    <span class="keyword">window</span>.less</span><br><span class="line">      .modifyVars(&#123;  <span class="comment">// 调用 `less.modifyVars` 方法来改变变量值</span></span><br><span class="line">        <span class="string">'@primary-color'</span>: result.<span class="keyword">color</span>,</span><br><span class="line">      &#125;)</span><br><span class="line">    localStorage[<span class="string">'primary-color'</span>] = result.<span class="keyword">color</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>iv：如果要持久化处理，直接将颜色值存到<code>localStorage</code>就行，然后在<code>index.html</code>每次加载获取并判断<code>localStorage</code>的变量值并改变就行</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">   <span class="keyword">var</span> primaryColor = localStorage.getItem(<span class="string">'primary-color'</span>);</span></span><br><span class="line">   if (primaryColor) &#123;</span><br><span class="line"><span class="javascript">     <span class="built_in">window</span>.less</span></span><br><span class="line"><span class="actionscript">       .modifyVars(&#123;  <span class="comment">// 调用 `less.modifyVars` 方法来改变变量值</span></span></span><br><span class="line"><span class="actionscript">         <span class="string">'@primary-color'</span>: primaryColor,</span></span><br><span class="line">       &#125;)</span><br><span class="line">   &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>搭建Hexo博客</title>
     <url>/2019/11/24/%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<p>忽然觉得Hexo搭建博客很快，对，那就折腾一下吧！</p><h3 id="新建GitHub-Page仓库"><a href="#新建GitHub-Page仓库" class="headerlink" title="新建GitHub Page仓库"></a>新建GitHub Page仓库</h3><ul>
