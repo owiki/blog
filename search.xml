@@ -36,6 +36,12 @@
 <p>iv：如果要持久化处理，直接将颜色值存到<code>localStorage</code>就行，然后在<code>index.html</code>每次加载获取并判断<code>localStorage</code>的变量值并改变就行</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">   <span class="keyword">var</span> primaryColor = localStorage.getItem(<span class="string">'primary-color'</span>);</span></span><br><span class="line">   if (primaryColor) &#123;</span><br><span class="line"><span class="javascript">     <span class="built_in">window</span>.less</span></span><br><span class="line"><span class="actionscript">       .modifyVars(&#123;  <span class="comment">// 调用 `less.modifyVars` 方法来改变变量值</span></span></span><br><span class="line"><span class="actionscript">         <span class="string">'@primary-color'</span>: primaryColor,</span></span><br><span class="line">       &#125;)</span><br><span class="line">   &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>React</category>
+      </categories>
+      <tags>
+        <tag>antd</tag>
+      </tags>
   </entry>
   <entry>
     <title>搭建Hexo博客</title>
