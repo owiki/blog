@@ -254,7 +254,26 @@
 <li>最后运行，这个压缩本地看不到效果，要发布才能看到</li>
 </ul>
 <figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">hexo</span> <span class="string">g</span></span><br><span class="line"></span><br><span class="line"><span class="attr">gulp</span></span><br><span class="line"></span><br><span class="line"><span class="attr">hexo</span> <span class="string">d</span></span><br></pre></td></tr></table></figure>
-
+<h5 id="在hexo里插图片"><a href="#在hexo里插图片" class="headerlink" title="在hexo里插图片"></a>在hexo里插图片</h5><ul>
+<li>基于vscode的markdown插件 - <code>Paste Image</code></li>
+<li>在hexo的<code>source</code>里新建<code>images</code>文件夹，这个就是用来保存所有文件的图片的</li>
+<li>配置<code>Paste Image</code>，设置粘贴图片的保存路径为相对路径<code>../images</code></li>
+</ul>
+<p><img src="/images/20191216222122.png" alt="保存路径"></p>
+<ul>
+<li>设置插入markdown的路径格式，至于这些字符的含义，看插件介绍页</li>
+</ul>
+<ol>
+<li><code>${imageSyntaxPrefix}</code>：markdown的格式<code>![](</code></li>
+<li><code>${imageSyntaxSuffix}</code>：也是markdown的格式<code>)</code></li>
+<li><code>/image/${imageFileName}</code>：就是绝对路径了，因为这个images文件夹在编译完以后是在根目录的文件夹，所有要用绝对路径</li>
+</ol>
+<p><img src="/images/20191216222240.png" alt="插入路径"></p>
+<p><img src="/images/20191216222457.png" alt="路径字符含义"></p>
+<ul>
+<li>还可以设置图片的名称</li>
+</ul>
+<p><img src="/images/20191216222341.png" alt="图片名称"></p>
 ]]></content>
       <categories>
         <category>其他</category>
