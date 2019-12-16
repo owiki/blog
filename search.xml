@@ -1,6 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Typora+Google drive搭建同步笔记</title>
+    <url>/2019/12/16/typora+google%E4%BA%91%E7%9B%98%E6%90%AD%E5%BB%BA%E5%90%8C%E6%AD%A5%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>有大佬喜欢用博客笔记，而我一直用笔记应用。过去一直在用有道云笔记，这一年来记了很多编程上的问题，虽然有道云笔记差强人意，但是过去试了很多笔记应用，觉得有道云笔记还是有很多不可替代的原因，直到我发现了Typora和Google drive。</p><a id="more"></a>
+<h3 id="为什么不用有道云笔记了"><a href="#为什么不用有道云笔记了" class="headerlink" title="为什么不用有道云笔记了"></a>为什么不用有道云笔记了</h3><ul>
+<li>鸡肋的收费机制，对于平时只写markdown的我，为了快捷在markdown中插图片，我不得不付140块的年费……就为了这一个功能，毕竟我抠门啊，觉得不值得</li>
+<li>然后就是鸡肋的markdown界面，你说你好歹把编辑界面整的好看点，哎，整个界面字体无法设置就算了，风格一如既往都是那几种单调的调色样式，代码高亮部分实在难入眼</li>
+<li>最后就是三栏显示和两栏显示的鸡肋，当用三栏目录的时候，我实在不知道中间的目录栏有啥用，既不能像侧栏那样树状展开目录，还占据大量空间；在用笔记本写markdown的时候，实际编辑预览区域小的可怜，那怎么办，换两栏显示吧。可是换了两栏显示，发现能够树状展开目录的侧栏居然被折叠起来了（MDzz）</li>
+</ul>
+<h3 id="换什么笔记"><a href="#换什么笔记" class="headerlink" title="换什么笔记"></a>换什么笔记</h3><p>Google了很多笔记应用，挨个尝试，说实话，我个人觉得印象笔记并不如有道云笔记，也没有其他原因，就是觉得界面不喜欢。而且印象笔记免费账户空间真的小，我如果上传PDF可能就歇菜了。然后看了为知笔记，为知笔记的架构很先进，还能开发插件，但是就是因为太先进了，对于只想简单记笔记的人都算折腾，内置的markdown编辑器很鸡肋，需要安装Editor.md编辑器插件，挺好用的。</p>
+<h3 id="Typora"><a href="#Typora" class="headerlink" title="Typora"></a><a href="https://www.typora.io/" target="_blank" rel="noopener">Typora</a></h3><ul>
+<li>我单方面宣布这是本世纪最伟大的编辑器，嘿嘿嘿</li>
+<li>颜值高，界面简洁，自定义主题，其他配置简单易懂；最牛逼的是能配合云盘同步本地笔记，尤其是笔记里的静态资源路径问题能很好的解决！</li>
+</ul>
+<h4 id="准备工具"><a href="#准备工具" class="headerlink" title="准备工具"></a>准备工具</h4><ul>
+<li>Typora</li>
+<li>Google drive，其实不一定要Google drive，那个谁谁谁彦宏的也行；但你要保证云盘在本地会自动同步；选Google drive主要是免费空间15G绝对够用，没有客户端，对！你没看错，这玩意没有客户端，设置本地文件夹就立马开始同步了哦！看看，这才叫专业！</li>
+</ul>
+<h4 id="开始折腾"><a href="#开始折腾" class="headerlink" title="开始折腾"></a>开始折腾</h4><ul>
+<li>安装Typora</li>
+<li>安装Google drive，==注意了昂，安装事项==</li>
+</ul>
+<ol>
+<li>第一步选择本地同步到Google云盘的文件夹，这一步建议全部取消勾选，因为这里的文件夹都不会在设备之间同步；只有Google云端硬盘这个文件夹可以在设备间自动同步，如果不清楚，可以打开Google drive看看文件夹结构就知道了，可以看到不同设备的文件夹是单独放置的</li>
+</ol>
+<p><img src="/images/20191216214843.png" alt="取消勾选本地文件夹"></p>
+<p><img src="/images/20191216215203.png" alt="不同设备同步文件夹"></p>
+<ol start="2">
+<li>然后第三部选择Google云端硬盘同步的本地文件夹，这一步很重要，因为待会笔记文件就放在这里</li>
+</ol>
+<p><img src="/images/20191216215328.png" alt="笔记存放的文件夹"></p>
+<ul>
+<li>好了，Google drive安装完，我们要去Typora设置一下markdown的图片存放路径了</li>
+</ul>
+<ol>
+<li>先设置Typora一体化显示，然后重启Typora，否则有些选项你找不到在哪</li>
+</ol>
+<p><img src="/images/20191216215514.png" alt="一体化外观"></p>
+<ol start="2">
+<li>然后找到菜单打开笔记文件夹</li>
+</ol>
+<p><img src="/images/20191216220134.png" alt="笔记文件夹"></p>
+<ol start="3">
+<li>然后在<code>偏好设置</code>里设置图像<code>复制到指定路径</code>，并且设置图像存放路径，用相对路径，就是相对于你当前打开的笔记文件夹的路径，例如我的笔记存放在<code>C:\oxygen\note\core</code>这个下面，和<code>core</code>同级的还有一个<code>image</code>文件夹，即<code>C:\oxygen\note\image</code>这个文件夹，那么我的图片路径就是<code>./image</code>，总之要保证你的两个设备的Typora插入图片后的markdown里的图片路径字符串是一样的；可以看到我的笔记在两个设备间插入的图片路径都是<code>image/image-xxx.png</code></li>
+</ol>
+<p><img src="/images/20191216220247.png" alt="图像路径"></p>
+<p><img src="/images/20191216220443.png" alt="插入的图片路径"></p>
+<p>如果觉得有问题可以设置完了立马测试一下插图片后的路径显示的是什么</p>
+<ol start="4">
+<li>这下Google drive在检测到新文件后就会在不同设备间自动同步所有图片和笔记了；当然了这里的路径只能在不同设备的本地使用，无法分享到网络，也无法在Google drive中打开显示，因为插入的图片的路径都是相对路径。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>tool</category>
+      </categories>
+      <tags>
+        <tag>Typora</tag>
+        <tag>Google drive</tag>
+        <tag>编程笔记</tag>
+        <tag>工具</tag>
+        <tag>笔记同步</tag>
+        <tag>免费</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>基于antd官网方案的换肤</title>
     <url>/2019/11/27/%E5%9F%BA%E4%BA%8Eantd%E5%AE%98%E7%BD%91%E6%96%B9%E6%A1%88%E7%9A%84%E6%8D%A2%E8%82%A4/</url>
     <content><![CDATA[<h4 id="rc-color-picker"><a href="#rc-color-picker" class="headerlink" title="rc-color-picker"></a><a href="rc-color-picker">rc-color-picker</a></h4><ul>
